@@ -69,8 +69,8 @@ check_docker:
 
 check_env:
 	@if [ ! -f srcs/.env ]; then \
-		echo "Arquivo .env não encontrado. Por favor, crie o arquivo srcs/.env manualmente."; \
-		exit 1; \
+		echo ".env file not found. Generating with random passwords..."; \
+		./srcs/generate_env.sh; \
 	fi
 
 start:
