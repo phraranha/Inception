@@ -1,0 +1,28 @@
+# Environment variables (contains sensitive data)
+srcs/.env
+.env
+
+# Docker volumes data directory
+/home/*/data/
+
+# Subject and evaluation materials (not part of deliverable)
+en.subject.pdf
+increg/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp

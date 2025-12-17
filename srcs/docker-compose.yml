@@ -1,0 +1,78 @@
+networks:
+  inception-network:
+    name: inception-network
+    driver: bridge
+
+volumes:
+  inception-db:
+    name: database
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/paranha/data/database-volume
+
+  inception-site:
+    driver: local
+    name: wordpress-site
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/paranha/data/wordpress-volume
+
+services:
+  nginx:
+    pull_policy: never
+    init: true
+    container_name: nginx
+    build:
+      context: ./requirements/nginx
+      dockerfile: nginx.dockerfile
+    image: nginx
+    volumes:
+      - inception-site:/var/www/html/
+    networks:
+      - inception-network
+    ports:
+      - 443:443
+    depends_on:
+      - mariadb
+      - wordpress
+    restart: on-failure:5
+
+  mariadb:
+    pull_policy: never
+    init: true
+    container_name: mariadb
+    env_file: .env
+    build:
+      context: ./requirements/mariadb
+      dockerfile: mariadb.dockerfile
+      args:
+        - DB_NAME
+        - DB_USER
+        - DB_PW
+        - DB_ROOT_PW
+    image: mariadb
+    volumes:
+      - inception-db:/var/lib/mysql/
+    networks:
+      - inception-network
+    restart: on-failure:5
+
+  wordpress:
+    pull_policy: never
+    init: true
+    container_name: wordpress
+    env_file: .env
+    build: 
+      context: ./requirements/wordpress
+      dockerfile: wordpress.dockerfile
+    image: wordpress
+    volumes:
+      - inception-site:/var/www/html/
+    networks:
+      - inception-network
+    depends_on:
+      - mariadb
+    restart: on-failure:5

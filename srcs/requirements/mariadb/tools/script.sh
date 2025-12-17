@@ -1,0 +1,11 @@
+#!/bin/bash
+
+service mariadb start
+
+mysql -u root <<EOF
+ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PW}';
+CREATE DATABASE IF NOT EXISTS ${DB_NAME};
+CREATE USER IF NOT EXISTS '${DB_USER}'@'%' IDENTIFIED BY '${DB_PW}';
+GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';
+FLUSH PRIVILEGES;
+EOF
