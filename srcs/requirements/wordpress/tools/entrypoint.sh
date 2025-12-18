@@ -24,7 +24,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 		--title=${TITLE} \
 		--allow-root
 
-	wp theme activate twentytwentyfive --allow-root
+	wp theme activate twentytwentyone --allow-root
 
 	wp post update 1 \
 		--post_title="Inception - paranha" \

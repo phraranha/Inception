@@ -58,13 +58,13 @@ check_domain_in_hosts:
 
 check_docker:
 	@if ! docker --version >/dev/null 2>&1; then \
-		echo "Docker não encontrado. Instalando..."; \
+		echo "Docker not found. Installing..."; \
 		sudo sh -c "apt-get update"; \
 		sudo sh -c "apt-get upgrade -y"; \
 		sudo sh -c "apt-get install -y ./docker-desktop-amd64.deb"; \
 		sudo sh -c "systemctl --user start docker-desktop"; \
 	else \
-		echo "Docker já está instalado"; \
+		echo "Docker is already installed"; \
 	fi
 
 check_env:
@@ -85,21 +85,21 @@ clean_containers:
 	@if [ -n "$$(docker ps -aq)" ]; then \
 		docker rm $$(docker ps -aq); \
 	else \
-		echo "Nenhum container para remover"; \
+		echo "No containers to remove"; \
 	fi
 
 clean_images:
 	@if [ -n "$$(docker images -q)" ]; then \
 		docker rmi $$(docker images -q); \
 	else \
-		echo "Nenhuma imagem para remover"; \
+		echo "No images to remove"; \
 	fi
 
 clean_volumes:
 	@if [ -n "$$(docker volume ls -q)" ]; then \
 		docker volume rm $$(docker volume ls -q); \
 	else \
-		echo "Nenhum volume para remover"; \
+		echo "No volumes to remove"; \
 	fi
 
 clean_network:
