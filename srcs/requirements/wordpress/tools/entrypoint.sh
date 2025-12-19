@@ -58,7 +58,7 @@ chown www-data:www-data /run/php
 chown -R www-data:www-data /var/www/html
 chmod -R 755 /var/www/html
 
-php-fpm7.4 -F
+php-fpm8.1 -F
 
 
 
