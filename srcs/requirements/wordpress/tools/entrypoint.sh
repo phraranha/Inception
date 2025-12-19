@@ -17,11 +17,11 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 
 	wp core install \
 		--path=/var/www/html/ \
-		--admin_user=${WP_ADM} \
-		--admin_password=${WP_ADM_PW} \
-		--admin_email=${WP_ADM_MAIL} \
-		--url=${DOMAIN} \
-		--title=${TITLE} \
+		--admin_user="${WP_ADM}" \
+		--admin_password="${WP_ADM_PW}" \
+		--admin_email="${WP_ADM_MAIL}" \
+		--url="${DOMAIN}" \
+		--title="${TITLE}" \
 		--allow-root
 
 	wp theme activate twentytwentyone --allow-root
@@ -58,7 +58,7 @@ chown www-data:www-data /run/php
 chown -R www-data:www-data /var/www/html
 chmod -R 755 /var/www/html
 
-php-fpm8.1 -F
+php-fpm8.2 -F
 
 
 
