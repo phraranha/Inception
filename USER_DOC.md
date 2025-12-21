@@ -59,11 +59,11 @@ The Inception project provides a complete web hosting infrastructure with three 
    ```
 
    This will:
-   - ✓ Check that `.env` file exists
-   - ✓ Create data directories for persistent storage
-   - ✓ Add `paranha.42.fr` to your hosts file
-   - ✓ Build all Docker images
-   - ✓ Start all containers
+   - Check that `.env` file exists
+   - Create data directories for persistent storage
+   - Add `paranha.42.fr` to your hosts file
+   - Build all Docker images
+   - Start all containers
 
 3. **Wait for completion** (first build takes 2-5 minutes)
 
@@ -105,11 +105,11 @@ This stops the containers but preserves all data.
 ### What Gets Preserved
 
 When you stop the project:
-- ✓ All website content (posts, pages)
-- ✓ All user accounts
-- ✓ All WordPress settings and plugins
-- ✓ All database data
-- ✓ All uploaded media files
+- All website content (posts, pages)
+- All user accounts
+- All WordPress settings and plugins
+- All database data
+- All uploaded media files
 
 ---
 
@@ -170,13 +170,13 @@ The administrator credentials are stored in the `srcs/.env` file:
 ### What You Can Do as Admin
 
 From the WordPress admin panel you can:
-- ✎ Create and edit posts and pages
-- 👥 Manage users
-- 🎨 Change themes
-- 🔌 Install/activate plugins
-- ⚙️ Configure site settings
-- 📊 View analytics
-- 💬 Moderate comments
+- Create and edit posts and pages
+- Manage users
+- Change themes
+- Install/activate plugins
+- Configure site settings
+- View analytics
+- Moderate comments
 
 ---
 
@@ -251,10 +251,10 @@ cat srcs/.env
 
 ### Security Best Practices
 
-- 🔒 Never share the `.env` file
-- 🔒 Use strong, unique passwords
-- 🔒 Don't commit `.env` to version control (it's git-ignored)
-- 🔒 Change default passwords for production use
+- Never share the `.env` file
+- Use strong, unique passwords
+- Don't commit `.env` to version control (it's git-ignored)
+- Change default passwords for production use
 
 ---
 

@@ -317,27 +317,27 @@ sudo chmod -R 755 /home/paranha/data/
    ```
 
 3. **Verify**:
-   - [ ] 3 containers running: `docker ps`
-   - [ ] NGINX accessible: `https://paranha.42.fr`
-   - [ ] HTTP blocked: `curl http://paranha.42.fr` (should fail)
-   - [ ] TLS 1.2/1.3 only (check browser dev tools)
-   - [ ] WordPress admin login works
-   - [ ] Database contains data
-   - [ ] Volumes persist after `make stop && make up`
+   - 3 containers running: `docker ps`
+   - NGINX accessible: `https://paranha.42.fr`
+   - HTTP blocked: `curl http://paranha.42.fr` (should fail)
+   - TLS 1.2/1.3 only (check browser dev tools)
+   - WordPress admin login works
+   - Database contains data
+   - Volumes persist after `make stop && make up`
 
 ### Key Checkpoints
 
-✅ **No pre-made images**: All built from custom Dockerfiles
-✅ **No latest tag**: Using `debian:oldstable`
-✅ **No forbidden commands**: No `tail -f`, `sleep infinity`, `bash` in entrypoints
-✅ **No `--link` or `network: host`**: Using Docker network
-✅ **Network present**: `docker network ls` shows `inception-network`
-✅ **NGINX only entrypoint**: Only port 443 exposed
-✅ **Two WordPress users**: Admin + regular user
-✅ **Admin username valid**: Doesn't contain "admin" or "administrator"
-✅ **Volumes in /home/login/data**: Using `/home/paranha/data/`
-✅ **Domain configured**: `paranha.42.fr`
-✅ **No credentials in Git**: `.env` is git-ignored
+- **No pre-made images**: All built from custom Dockerfiles
+- **No latest tag**: Using `debian:oldstable`
+- **No forbidden commands**: No `tail -f`, `sleep infinity`, `bash` in entrypoints
+- **No `--link` or `network: host`**: Using Docker network
+- **Network present**: `docker network ls` shows `inception-network`
+- **NGINX only entrypoint**: Only port 443 exposed
+- **Two WordPress users**: Admin + regular user
+- **Admin username valid**: Doesn't contain "admin" or "administrator"
+- **Volumes in /home/login/data**: Using `/home/paranha/data/`
+- **Domain configured**: `paranha.42.fr`
+- **No credentials in Git**: `.env` is git-ignored
 
 ## Resources
 

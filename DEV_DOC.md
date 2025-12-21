@@ -586,11 +586,11 @@ docker compose -f srcs/docker-compose.yml logs -f
 
 #### NGINX Tests
 
-- [ ] HTTPS accessible on port 443
-- [ ] HTTP (port 80) is blocked/drops connection
-- [ ] SSL certificate is valid (self-signed)
-- [ ] TLS 1.2/1.3 only (check with browser dev tools)
-- [ ] PHP files are processed (not downloaded)
+- HTTPS accessible on port 443
+- HTTP (port 80) is blocked/drops connection
+- SSL certificate is valid (self-signed)
+- TLS 1.2/1.3 only (check with browser dev tools)
+- PHP files are processed (not downloaded)
 
 ```bash
 # Test HTTPS
@@ -605,12 +605,12 @@ openssl s_client -connect paranha.42.fr:443 -tls1_2
 
 #### WordPress Tests
 
-- [ ] WordPress site loads
-- [ ] Can log in to admin panel
-- [ ] Can create new post
-- [ ] Can upload media
-- [ ] Regular user account works
-- [ ] Database connection functional
+- WordPress site loads
+- Can log in to admin panel
+- Can create new post
+- Can upload media
+- Regular user account works
+- Database connection functional
 
 ```bash
 # Test WordPress CLI
@@ -625,10 +625,10 @@ docker exec wordpress wp db check --allow-root
 
 #### MariaDB Tests
 
-- [ ] Database container running
-- [ ] WordPress database exists
-- [ ] Users have correct permissions
-- [ ] Data persists after restart
+- Database container running
+- WordPress database exists
+- Users have correct permissions
+- Data persists after restart
 
 ```bash
 # Connect to database
@@ -670,27 +670,27 @@ echo "Testing Inception Infrastructure..."
 # Test HTTPS
 echo "Testing HTTPS..."
 if curl -k -s https://paranha.42.fr | grep -q "WordPress"; then
-    echo "✓ HTTPS working"
+    echo "[PASS] HTTPS working"
 else
-    echo "✗ HTTPS failed"
+    echo "[FAIL] HTTPS failed"
     exit 1
 fi
 
 # Test containers running
 echo "Testing containers..."
 if [ $(docker ps -q | wc -l) -eq 3 ]; then
-    echo "✓ All containers running"
+    echo "[PASS] All containers running"
 else
-    echo "✗ Not all containers running"
+    echo "[FAIL] Not all containers running"
     exit 1
 fi
 
 # Test volumes exist
 echo "Testing volumes..."
 if docker volume inspect database >/dev/null 2>&1; then
-    echo "✓ Database volume exists"
+    echo "[PASS] Database volume exists"
 else
-    echo "✗ Database volume missing"
+    echo "[FAIL] Database volume missing"
     exit 1
 fi
 
